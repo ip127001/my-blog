@@ -1,4 +1,7 @@
 module.exports = {
+  images: {
+    domains: ["ik.imagekit.io"],
+  },
   env: {
     NEXT_PUBLIC_USER_NAME: process.env.NEXT_PUBLIC_USER_NAME,
     NEXT_PUBLIC_PASSWORD: process.env.NEXT_PUBLIC_PASSWORD,

@@ -60,7 +60,7 @@ export default function Home({ allPostsData }) {
         <div className={utilStyles.profile}>
           <Image
             priority
-            src="/images/profile.jpg"
+            src="https://ik.imagekit.io/15p9cgr0y/IMG20251226195040.jpg?tr=w-500,h-500,fo-face,z-0.35"
             className={utilStyles.borderCircle}
             height={250}
             width={250}
