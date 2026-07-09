@@ -42,7 +42,7 @@ export default function Home({ allPostsData }) {
         <div className={utilStyles.profile}>
           <Image
             priority
-            src="/images/profile.jpg"
+            src="https://photos.app.goo.gl/b8dd8QTKxkM8qKvb7"
             className={utilStyles.borderCircle}
             height={250}
             width={250}
