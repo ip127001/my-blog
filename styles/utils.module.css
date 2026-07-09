@@ -93,13 +93,86 @@
   margin-bottom: 60px;
 }
 
-.series {
-  text-align: center;
-  margin-bottom: 80px;
-  font-size: 36px;
-  background: linear-gradient(to right, #12c2e9 0%, #c471ed 50%, #f64f59 100%);
+.hero {
+  position: relative;
+  padding-top: 40px;
+}
+
+.floatingCode {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.floatingSnippet {
+  position: absolute;
+  bottom: -2em;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0070f3;
+  opacity: 0;
+  white-space: nowrap;
+  animation-name: floatUp;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.18;
+  }
+  50% {
+    opacity: 0.12;
+  }
+  90% {
+    opacity: 0.05;
+  }
+  100% {
+    transform: translateY(-420px) rotate(8deg);
+    opacity: 0;
+  }
+}
+
+.gradientName {
+  background: linear-gradient(
+    90deg,
+    #12c2e9,
+    #c471ed,
+    #f64f59,
+    #f7971e,
+    #12c2e9
+  );
+  background-size: 300% 100%;
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  animation: gradientShift 6s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.profile,
+.introWrap {
+  position: relative;
+  z-index: 1;
 }
 
 .hidden {
@@ -289,15 +362,12 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .series {
-    font-size: 28px;
-    margin-bottom: 40px;
-    font-weight: 500;
+  .hero {
+    padding-top: 20px;
   }
 
-  .series a {
-    text-decoration: underline;
-
+  .floatingSnippet {
+    font-size: 13px;
   }
 
   .mainContainer {

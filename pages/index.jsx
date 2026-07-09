@@ -5,6 +5,12 @@ import Date from "../components/date";
 import Image from "next/image";
 import utilStyles from "../styles/utils.module.css";
 import TextAnimate from "./textAnimate";
+import FloatingCode from "../components/floatingCode";
+
+const SITE_URL = "https://geekrk.vercel.app";
+const SITE_TITLE = "Rohit Kumawat (devrk) | Frontend Engineer Blog";
+const SITE_DESCRIPTION =
+  "Blogs on JavaScript, React and frontend interview preparation by Rohit Kumawat, SDE3 at Swiggy. Learn arrays, hoisting, var/let/const, React performance and more.";
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
@@ -27,18 +33,30 @@ export default function Home({ allPostsData }) {
   return (
     <div className={utilStyles.mainContainer}>
       <Head>
-        <title>devrk</title>
+        <title>{SITE_TITLE}</title>
+        <meta name="description" content={SITE_DESCRIPTION} />
+        <meta
+          name="keywords"
+          content="javascript, react, frontend, web development, interview preparation, blog, Rohit Kumawat"
+        />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={`${SITE_URL}/`} />
+        <meta property="og:title" content={SITE_TITLE} />
+        <meta property="og:description" content={SITE_DESCRIPTION} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${SITE_URL}/`} />
+        <meta
+          property="og:image"
+          content="https://res.cloudinary.com/dst3jqdwc/image/upload/v1656324684/logo_jwdqxb.png"
+        />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@geekrk" />
+        <meta name="twitter:title" content={SITE_TITLE} />
+        <meta name="twitter:description" content={SITE_DESCRIPTION} />
       </Head>
 
-      <section>
-        <div className={utilStyles.series}>
-          <Link href={`/frontend-interview-guide`}>
-            <a>Launching: Guide to prepare for Frontend Interviews</a>
-          </Link>
-        </div>
-      </section>
-
-      <section className={utilStyles.headingMd}>
+      <section className={`${utilStyles.headingMd} ${utilStyles.hero}`}>
+        <FloatingCode />
         <div className={utilStyles.profile}>
           <Image
             priority
@@ -54,22 +72,24 @@ export default function Home({ allPostsData }) {
               rel="noopener"
               href="https://www.linkedin.com/in/rohit-kumawat-0088b7102/"
             >
-              <img src="/images/linkedin.svg" />
+              <img src="/images/linkedin.svg" alt="LinkedIn" />
             </a>
             <a target="_blank" rel="noopener" href="https://twitter.com/geekrk">
-              <img src="/images/twitter.svg" />
+              <img src="/images/twitter.svg" alt="Twitter" />
             </a>
             <a
               target="_blank"
               rel="noopener"
               href="https://github.com/ip127001"
             >
-              <img src="/images/github.svg" />
+              <img src="/images/github.svg" alt="GitHub" />
             </a>
           </div>
         </div>
         <div className={utilStyles.introWrap}>
-          <div className={`${utilStyles.intro} ${utilStyles.name}`}>
+          <div
+            className={`${utilStyles.intro} ${utilStyles.name} ${utilStyles.gradientName}`}
+          >
             Hello 👋, I'm Rohit.
           </div>
           <div className={utilStyles.intro}>I am a SDE3 at Swiggy</div>
@@ -83,10 +103,6 @@ export default function Home({ allPostsData }) {
       <section className={`${utilStyles.blogSection}`}>
         <div className={utilStyles.blogHeader}>
           <h1 className={utilStyles.headingLg}>Recent Blogs:</h1>
-          {/* <span className={`${utilStyles.tag} ${utilStyles.yellow}`}>
-            JavaScript
-          </span>
-          <span className={`${utilStyles.tag} ${utilStyles.blue}`}>React</span> */}
         </div>
         <ul className={utilStyles.list}>
           <div className={utilStyles.projects}>
@@ -96,6 +112,7 @@ export default function Home({ allPostsData }) {
                   <img
                     className={utilStyles.projectImg}
                     src={`/images/${id}.png`}
+                    alt={title}
                   />
                 </Link>
                 <li className={utilStyles.listItem}>
@@ -115,7 +132,7 @@ export default function Home({ allPostsData }) {
         <h1>Projects:</h1>
         <div className={utilStyles.projects}>
           <div className={utilStyles.project}>
-            <img src="/images/project.png" />
+            <img src="/images/project.png" alt="Swiggy Spending Calculator" />
             <a
               target="_blank"
               rel="noopener noreferrer"

@@ -6,17 +6,6 @@ export default class MyDocument extends Document {
       <Html>
         <Head>
           <link rel="icon" href="/images/logo.png" />
-          <meta property="og:title" content="devrk" />
-          <meta
-            property="og:image"
-            content="https://res.cloudinary.com/dst3jqdwc/image/upload/v1656324684/logo_jwdqxb.png"
-          />
-          <meta
-            property="og:description"
-            content="Frontend related content by Rohit Kumawat"
-          />
-          <meta property="og:type" content="article" />
-          <meta property="og:url" content="https://geekrk.vercel.app/" />
           <script
             async
             src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}

@@ -17,17 +17,33 @@ export async function getStaticPaths() {
   };
 }
 
+const SITE_URL = "https://geekrk.vercel.app";
+
+function buildExcerpt(markdown) {
+  const plainText = markdown
+    .replace(/```[\s\S]*?```/g, " ")
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
+    .replace(/[#*_`>~-]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  return plainText.length > 160
+    ? `${plainText.slice(0, 157)}...`
+    : plainText;
+}
+
 export async function getStaticProps({ params }) {
   const postData = await getPostData(params.id);
 
   return {
     props: {
       postData,
+      excerpt: buildExcerpt(postData.markdown),
     },
   };
 }
 
-export default function Post({ postData }) {
+export default function Post({ postData, excerpt }) {
   const [likes, setLikes] = useState(postData.likes);
   const [isLoading, setisLoading] = useState(true);
 
@@ -65,6 +81,46 @@ export default function Post({ postData }) {
       </Link>
       <Head>
         <title>{postData.title}</title>
+        <meta name="description" content={excerpt} />
+        {postData.tags && <meta name="keywords" content={postData.tags} />}
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={`${SITE_URL}/posts/${postData.id}`} />
+        <meta property="og:title" content={postData.title} />
+        <meta property="og:description" content={excerpt} />
+        <meta property="og:type" content="article" />
+        <meta
+          property="og:url"
+          content={`${SITE_URL}/posts/${postData.id}`}
+        />
+        <meta
+          property="og:image"
+          content={`${SITE_URL}/images/${postData.id}.png`}
+        />
+        <meta property="article:published_time" content={postData.date} />
+        <meta property="article:author" content="Rohit Kumawat" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@geekrk" />
+        <meta name="twitter:title" content={postData.title} />
+        <meta name="twitter:description" content={excerpt} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BlogPosting",
+              headline: postData.title,
+              datePublished: postData.date,
+              author: {
+                "@type": "Person",
+                name: "Rohit Kumawat",
+                url: SITE_URL,
+              },
+              description: excerpt,
+              image: `${SITE_URL}/images/${postData.id}.png`,
+              mainEntityOfPage: `${SITE_URL}/posts/${postData.id}`,
+            }),
+          }}
+        />
       </Head>
       <article>
         <h1 className={utilStyles.headingXl}>{postData.title}</h1>
