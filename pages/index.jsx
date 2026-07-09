@@ -60,10 +60,11 @@ export default function Home({ allPostsData }) {
         <div className={utilStyles.profile}>
           <Image
             priority
-            src="https://photos.app.goo.gl/b8dd8QTKxkM8qKvb7"
+            src="/images/profile.jpg"
             className={utilStyles.borderCircle}
             height={250}
             width={250}
+            objectFit="cover"
             alt="Rohit Kumawat Profile Pic"
           />
           <div className={utilStyles.socials}>
