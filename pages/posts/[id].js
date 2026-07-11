@@ -19,6 +19,24 @@ export async function getStaticPaths() {
 
 const SITE_URL = "https://geekrk.vercel.app";
 
+// Mermaid's npm package breaks when bundled by Next 12's webpack
+// ("__name is not defined" at runtime), so load the prebuilt browser
+// bundle from CDN instead. Cached so it only loads once per session.
+let mermaidPromise = null;
+function loadMermaid() {
+  if (!mermaidPromise) {
+    mermaidPromise = new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src =
+        "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js";
+      script.onload = () => resolve(window.mermaid);
+      script.onerror = reject;
+      document.head.appendChild(script);
+    });
+  }
+  return mermaidPromise;
+}
+
 function buildExcerpt(markdown) {
   const plainText = markdown
     .replace(/```[\s\S]*?```/g, " ")
@@ -59,7 +77,7 @@ export default function Post({ postData, excerpt }) {
     });
 
     if (mermaidBlocks.length > 0) {
-      import("mermaid").then(({ default: mermaid }) => {
+      loadMermaid().then((mermaid) => {
         mermaid.initialize({ startOnLoad: false, theme: "neutral" });
         mermaid.run({ querySelector: ".mermaid" });
       });
