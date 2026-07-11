@@ -48,6 +48,23 @@ export default function Post({ postData, excerpt }) {
   const [isLoading, setisLoading] = useState(true);
 
   useEffect(() => {
+    // Turn ```mermaid code blocks into diagram containers before hljs
+    // touches them, then let mermaid render them into SVGs.
+    const mermaidBlocks = document.querySelectorAll("code.language-mermaid");
+    mermaidBlocks.forEach((code) => {
+      const container = document.createElement("div");
+      container.className = "mermaid";
+      container.textContent = code.textContent;
+      code.parentElement.replaceWith(container);
+    });
+
+    if (mermaidBlocks.length > 0) {
+      import("mermaid").then(({ default: mermaid }) => {
+        mermaid.initialize({ startOnLoad: false, theme: "neutral" });
+        mermaid.run({ querySelector: ".mermaid" });
+      });
+    }
+
     hljs.highlightAll();
   }, []);
 

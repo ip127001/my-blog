@@ -55,6 +55,17 @@ code {
   position: relative;
   
 }
+.mermaid {
+  display: flex;
+  justify-content: center;
+  margin: 32px 0;
+}
+
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
 blockquote {
   border-left: 2px solid #dedede;
   padding-left: 10px;

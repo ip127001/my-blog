@@ -48,6 +48,29 @@ The browser opens a TCP connection to the server (usually port 443).
 3. **Key computation** — browser and server independently combine "their own private value + the other side's public value" to arrive at the **same shared secret**. The magic of Diffie-Hellman is that an eavesdropper who saw both public values still cannot compute this secret.
 4. **Certificate verification** — the browser checks that the certificate is signed by a trusted CA, matches the domain, and is not expired or revoked. The server proves it holds the private key by signing the handshake messages.
 
+Here is the whole flow visualised:
+
+```mermaid
+sequenceDiagram
+    participant B as Browser
+    participant S as Server
+    participant CA as Certificate Authority
+
+    Note over S,CA: Before any user visits
+    S->>CA: Certificate Signing Request (public key)
+    CA-->>S: Signed certificate for yourdomain.com
+
+    Note over B,S: On every new connection
+    B->>S: TCP connection (port 443)
+    B->>S: ClientHello (TLS versions, ciphers, DH public value)
+    S->>B: ServerHello (chosen cipher, DH public value, certificate)
+    Note over B: Verify certificate against trusted CA roots
+    Note over B,S: Both compute the same shared secret (ECDHE)
+    B->>S: Finished (encrypted)
+    S->>B: Finished (encrypted)
+    Note over B,S: HTTP data encrypted with symmetric keys (AES-GCM)
+```
+
 ### Step 3: Symmetric encryption for actual data
 
 Asymmetric crypto is slow, so it is only used for the handshake. The shared secret is used to derive **symmetric session keys** (typically AES-GCM or ChaCha20-Poly1305), and all HTTP data is then encrypted with those. Every record also carries an authentication tag, which gives integrity — any tampering makes decryption fail.
