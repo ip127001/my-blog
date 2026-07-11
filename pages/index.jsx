@@ -8,6 +8,7 @@ import TextAnimate from "./textAnimate";
 import FloatingCode from "../components/floatingCode";
 import Resume from "../components/resume";
 import Layout from "../components/layout";
+import { saveCurrentScroll } from "../lib/scroll";
 
 const SITE_URL = "https://geekrk.vercel.app";
 const SITE_TITLE = "Rohit Kumawat | Lead Frontend Engineer";
@@ -147,9 +148,10 @@ export default function Home({ allPostsData }) {
             <div className={utilStyles.blogGrid}>
               {allPostsData.map(({ id, date, title }) => (
                 <article className={utilStyles.blogCard} key={id}>
-                  <Link href={`/posts/${id}`}>
+                  <Link href={`/posts/${id}`} scroll={false}>
                     <a
                       className={utilStyles.blogCardLink}
+                      onMouseDown={saveCurrentScroll}
                       onClick={() => clickBlog(title)}
                     >
                       <img

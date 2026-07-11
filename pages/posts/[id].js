@@ -5,6 +5,7 @@ import Link from "next/link";
 import Date from "../../components/date";
 import utilStyles from "../../styles/utils.module.css";
 import Layout from "../../components/layout";
+import { RESTORE_HOME_FLAG, saveCurrentScroll } from "../../lib/scroll";
 import { useEffect } from "react";
 import hljs from "highlight.js";
 import javascript from "highlight.js/lib/languages/javascript";
@@ -113,8 +114,16 @@ export default function Post({ postData, excerpt }) {
   return (
     <Layout>
       <div className={utilStyles.postContainer}>
-        <Link href="/">
-          <a className={utilStyles.backToHome}>&larr; Back to Home</a>
+        <Link href="/" scroll={false}>
+          <a
+            className={utilStyles.backToHome}
+            onMouseDown={saveCurrentScroll}
+            onClick={() =>
+              sessionStorage.setItem(RESTORE_HOME_FLAG, "1")
+            }
+          >
+            &larr; Back to Home
+          </a>
         </Link>
       <Head>
         <title>{postData.title}</title>

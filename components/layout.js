@@ -1,16 +1,38 @@
+import Link from "next/link";
 import utilStyles from "../styles/utils.module.css";
+
+function scrollToSection(hash) {
+  const el = document.getElementById(hash);
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+    window.history.pushState(null, "", `/#${hash}`);
+  }
+}
+
+function handleSectionNav(e, hash) {
+  if (window.location.pathname === "/") {
+    e.preventDefault();
+    scrollToSection(hash);
+  }
+}
 
 export default function Layout({ children }) {
   return (
     <div className={utilStyles.siteWrap}>
       <nav className={utilStyles.navbar}>
-        <a href="/" className={utilStyles.logo}>
-          rohit.dev
-        </a>
+        <Link href="/">
+          <a className={utilStyles.logo}>rohit.dev</a>
+        </Link>
         <div className={utilStyles.navLinks}>
-          <a href="/#resume">Resume</a>
-          <a href="/#blogs">Blogs</a>
-          <a href="/#projects">Projects</a>
+          <Link href="/#resume" scroll={false}>
+            <a onClick={(e) => handleSectionNav(e, "resume")}>Resume</a>
+          </Link>
+          <Link href="/#blogs" scroll={false}>
+            <a onClick={(e) => handleSectionNav(e, "blogs")}>Blogs</a>
+          </Link>
+          <Link href="/#projects" scroll={false}>
+            <a onClick={(e) => handleSectionNav(e, "projects")}>Projects</a>
+          </Link>
         </div>
       </nav>
       {children}
