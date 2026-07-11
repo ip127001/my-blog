@@ -1,17 +1,20 @@
 import Image from "next/image";
 import seriesStyles from "../styles/series.module.css";
+import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
 import Head from "next/head";
+import Layout from "../components/layout";
 
 export default function Post() {
   return (
-    <div className={seriesStyles.interviewSeriesHeader}>
-      <Head>
-        <title>Frontend Interview Guide</title>
-      </Head>
-      <Link href="/">
-        <a>&larr; Back to Home</a>
-      </Link>
+    <Layout>
+      <div className={seriesStyles.interviewSeriesHeader}>
+        <Head>
+          <title>Frontend Interview Guide</title>
+        </Head>
+        <Link href="/">
+          <a className={utilStyles.backToHome}>&larr; Back to Home</a>
+        </Link>
       <h1 className={seriesStyles.header}>Frontend Interview Guide</h1>
       <Image
         priority
@@ -36,6 +39,7 @@ export default function Post() {
         </h2>
         <p>More coming soon...</p>
       </div>
-    </div>
+      </div>
+    </Layout>
   );
 }

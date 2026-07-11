@@ -1,36 +1,64 @@
 .interviewSeriesHeader {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    max-width: 40rem;
-    margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 32px 28px 80px;
 }
+
 .header {
-    background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 40px;
+  background: linear-gradient(
+    120deg,
+    var(--accent),
+    var(--accent-2),
+    var(--accent-3)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
 }
+
 .topicList {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 32px;
 }
-.backToHome {
-    text-align: left;
-    font-size: 12px;
-}
-.interviewSeriesHeader h1, .interviewSeriesHeader h2 {
-    font-weight: 500;
-}
-@media only screen and (max-width: 600px) {
-.interviewSeriesHeader {
-    max-width: 100%;
-    margin: 0 30px;
-}
-.header {
-    font-size: 26px;
-}
+
 .topicList h2 {
-    font-size: 20px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-secondary);
 }
+
+.topicList h2 a {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.topicList h2 a:hover {
+  color: var(--accent);
+}
+
+.topicList p {
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+@media only screen and (max-width: 600px) {
+  .interviewSeriesHeader {
+    padding: 24px 16px 60px;
+  }
+
+  .header {
+    font-size: 1.8rem;
+  }
+
+  .topicList h2 {
+    font-size: 1rem;
+  }
 }

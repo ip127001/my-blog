@@ -11,8 +11,8 @@ export default function TextAnimate() {
 
   useEffect(() => {
     consoleText(
-      ["JavaScript", "React", "Redux", "HTML", "CSS", "NodeJs"],
-      ["#fbb612", "#0575E6", "#c471ed", "#C33764", "#F7971E", "#159957"]
+      ["TypeScript", "React", "Next.js", "TanStack", "Node.js", "AWS"],
+      ["#22d3ee", "#818cf8", "#e879f9", "#34d399", "#f472b6", "#fbbf24"]
     );
     return () => {
       clearInterval(interval1.current);

@@ -4,6 +4,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Date from "../../components/date";
 import utilStyles from "../../styles/utils.module.css";
+import Layout from "../../components/layout";
 import { useEffect } from "react";
 import hljs from "highlight.js";
 import javascript from "highlight.js/lib/languages/javascript";
@@ -78,7 +79,7 @@ export default function Post({ postData, excerpt }) {
 
     if (mermaidBlocks.length > 0) {
       loadMermaid().then((mermaid) => {
-        mermaid.initialize({ startOnLoad: false, theme: "neutral" });
+        mermaid.initialize({ startOnLoad: false, theme: "dark" });
         mermaid.run({ querySelector: ".mermaid" });
       });
     }
@@ -110,10 +111,11 @@ export default function Post({ postData, excerpt }) {
   }
 
   return (
-    <div className={utilStyles.postContainer}>
-      <Link href="/">
-        <a className={utilStyles.backToHome}>&larr; Back to Home</a>
-      </Link>
+    <Layout>
+      <div className={utilStyles.postContainer}>
+        <Link href="/">
+          <a className={utilStyles.backToHome}>&larr; Back to Home</a>
+        </Link>
       <Head>
         <title>{postData.title}</title>
         <meta name="description" content={excerpt} />
@@ -159,9 +161,11 @@ export default function Post({ postData, excerpt }) {
       </Head>
       <article>
         <h1 className={utilStyles.headingXl}>{postData.title}</h1>
-        <div className={utilStyles.lightText}>
+        <div className={utilStyles.postMeta}>
           <div>
-            <div>Rohit Kumawat</div>
+            <div style={{ fontWeight: 500, color: "var(--text)" }}>
+              Rohit Kumawat
+            </div>
             <Date dateString={postData.date} />
           </div>
           <div className={utilStyles.thumbsSection}>
@@ -193,6 +197,7 @@ export default function Post({ postData, excerpt }) {
           dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
         />
       </article>
-    </div>
+      </div>
+    </Layout>
   );
 }

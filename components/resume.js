@@ -68,7 +68,10 @@ const SKILLS = [
 export default function Resume() {
   return (
     <section id="resume" className={utilStyles.resumeSection}>
-      <h1>My Resume:</h1>
+      <div className={utilStyles.sectionHeader}>
+        <span className={utilStyles.sectionLabel}>// 01 · career</span>
+        <h2 className={utilStyles.headingLg}>My Resume</h2>
+      </div>
       <div className={utilStyles.terminal}>
         <div className={utilStyles.terminalBar}>
           <span className={`${utilStyles.trafficDot} ${utilStyles.dotRed}`} />
