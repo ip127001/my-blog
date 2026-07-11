@@ -6,6 +6,7 @@ import Image from "next/image";
 import utilStyles from "../styles/utils.module.css";
 import TextAnimate from "./textAnimate";
 import FloatingCode from "../components/floatingCode";
+import Resume from "../components/resume";
 
 const SITE_URL = "https://geekrk.vercel.app";
 const SITE_TITLE = "Rohit Kumawat (devrk) | Frontend Engineer Blog";
@@ -93,13 +94,17 @@ export default function Home({ allPostsData }) {
           >
             Hello 👋, I'm Rohit.
           </div>
-          <div className={utilStyles.intro}>I am a SDE3 at Swiggy</div>
+          <div className={utilStyles.intro}>
+            I am a Lead Software Engineer at Swiggy
+          </div>
           <div className={utilStyles.tech}>
             <div className={utilStyles.techStack}> Tech Stack </div>
             <TextAnimate />
           </div>
         </div>
       </section>
+
+      <Resume />
 
       <section className={`${utilStyles.blogSection}`}>
         <div className={utilStyles.blogHeader}>

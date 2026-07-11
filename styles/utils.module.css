@@ -265,6 +265,271 @@
   margin-top: 80px;
 }
 
+/* ---------- Resume section (terminal / git-log theme) ---------- */
+
+.resumeSection {
+  margin-top: 80px;
+}
+
+.terminal {
+  background: #1e1f29;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 15px;
+}
+
+.terminalBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: #15161d;
+}
+
+.trafficDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.dotRed {
+  background: #ff5f57;
+}
+
+.dotYellow {
+  background: #febc2e;
+}
+
+.dotGreen {
+  background: #28c840;
+}
+
+.terminalTitle {
+  margin-left: 12px;
+  color: #8a8d99;
+  font-size: 13px;
+}
+
+.terminalBody {
+  padding: 20px 24px 24px;
+  color: #d6d8e0;
+}
+
+.cmdLine {
+  margin: 0 0 16px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.prompt {
+  color: #28c840;
+}
+
+/* Typewriter effect for the first command */
+.typedCmd {
+  display: inline-block;
+  vertical-align: bottom;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  animation: typeCmd 1.4s steps(24, end) 0.3s forwards;
+}
+
+@keyframes typeCmd {
+  to {
+    width: 24ch;
+  }
+}
+
+/* Commit graph */
+.commitList {
+  list-style: none;
+  margin: 0 0 8px;
+  padding: 0 0 0 10px;
+  border-left: 2px solid #3d3f4e;
+}
+
+.commit {
+  position: relative;
+  padding: 10px 12px 10px 24px;
+  margin-bottom: 4px;
+  border-radius: 6px;
+  opacity: 0;
+  cursor: default;
+  outline: none;
+  transform: translateX(-14px);
+  animation: commitIn 0.5s ease forwards;
+  transition: background 0.3s ease;
+}
+
+.commit:hover,
+.commit:focus {
+  background: #2a2c3a;
+}
+
+@keyframes commitIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.commitDot {
+  position: absolute;
+  left: -17px;
+  top: 17px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fbb612;
+  box-shadow: 0 0 0 0 rgba(251, 182, 18, 0.5);
+  animation: dotPulse 2.4s ease-out infinite;
+}
+
+.commit:first-child .commitDot {
+  background: #28c840;
+  box-shadow: 0 0 0 0 rgba(40, 200, 64, 0.55);
+}
+
+@keyframes dotPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(251, 182, 18, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 9px rgba(251, 182, 18, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(251, 182, 18, 0);
+  }
+}
+
+.commitHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.commitHash {
+  color: #fbb612;
+}
+
+.commitLabel {
+  color: #12c2e9;
+}
+
+.commitRole {
+  color: #fff;
+  font-weight: 600;
+}
+
+.commitPeriod {
+  margin-left: auto;
+  color: #8a8d99;
+  font-size: 13px;
+}
+
+/* Diff lines expand on hover/focus like a git diff */
+.commitDiff {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  color: #50fa7b;
+  font-size: 13.5px;
+  transition: max-height 0.5s ease, margin-top 0.3s ease;
+}
+
+.commit:hover .commitDiff,
+.commit:focus .commitDiff {
+  max-height: 200px;
+  margin-top: 8px;
+}
+
+.commitDiff li {
+  padding: 2px 0;
+  line-height: 1.5;
+}
+
+.commitHint {
+  margin: 0 0 24px;
+  color: #5a5d6b;
+  font-size: 12px;
+  font-style: italic;
+}
+
+/* Second command fades in after commits */
+.cmdLineDelayed {
+  opacity: 0;
+  animation: fadeIn 0.6s ease 2.8s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Skill chips */
+.skillChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.skillChip {
+  padding: 4px 14px;
+  border: 1px solid #3d3f4e;
+  border-radius: 999px;
+  color: #12c2e9;
+  font-size: 13.5px;
+  opacity: 0;
+  animation: chipIn 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+    chipFloat 3.2s ease-in-out infinite;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.skillChip:hover {
+  border-color: #12c2e9;
+  color: #fff;
+}
+
+@keyframes chipIn {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes chipFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.blinkCursor {
+  color: #d6d8e0;
+  animation: cursorBlink 1s steps(1) infinite;
+}
+
+@keyframes cursorBlink {
+  50% {
+    opacity: 0;
+  }
+}
+
 .tag {
   padding: 2px 6px;
   color: white;
@@ -453,6 +718,20 @@
   .project a {
     font-size: 18px;
   }
+
+  .terminal {
+    font-size: 13px;
+  }
+
+  .terminalBody {
+    padding: 16px;
+  }
+
+  .commitPeriod {
+    margin-left: 0;
+    flex-basis: 100%;
+  }
+
   .backToHome {
     font-size: 12px;
   }
