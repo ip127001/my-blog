@@ -124,7 +124,7 @@ add(1, 2)(3);    // 6
 add(1)(2, 3);    // 6
 ```
 
-Currying is useful when you want to **partially apply** configuration upfront and fill in the rest later — common in functional libraries and API design.
+> Currying is useful when you want to **partially apply** configuration upfront and fill in the rest later — common in functional libraries and API design.
 
 ### 4. Event handlers with config
 
@@ -176,39 +176,39 @@ for (var i = 0; i < 3; i++) {
 
 ## Interview questions on Closures
 
-**1. What is a closure in JavaScript?**
+#### 1. What is a closure in JavaScript?
 
 A closure is a function that retains access to variables from its lexical (outer) scope even after that outer function has finished executing. It is formed when a function is defined inside another function and references the outer function's variables.
 
-**2. When is a closure created?**
+#### 2. When is a closure created?
 
 A closure is created at **function creation time**, not at call time. Every time a function is defined inside another scope and references outer variables, a closure is formed.
 
-**3. Give a real-world use case of closures.**
+#### 3. Give a real-world use case of closures.
 
 Data privacy (module pattern), memoization, currying, event handlers that need configuration, debounce/throttle utilities, and React hooks that encapsulate state and logic.
 
-**4. What is the difference between scope and closure?**
+#### 4. What is the difference between scope and closure?
 
 Scope determines **where** a variable is accessible. A closure is what allows a function to **remember** variables from an outer scope even after that scope is no longer on the call stack.
 
-**5. Can closures cause memory leaks?**
+#### 5. Can closures cause memory leaks?
 
 Yes. If a closure holds a reference to a large object or DOM node and the closure itself is kept alive (e.g. a long-lived event listener), the referenced data cannot be garbage-collected until the closure is released.
 
-**6. Explain the classic `for` loop + `setTimeout` closure problem.**
+#### 6. Explain the classic `for` loop + `setTimeout` closure problem.
 
 With `var`, all iterations share one `i`. By the time timeouts run, the loop has finished and `i` is 3. Fix with `let` (block scope per iteration) or an IIFE that captures each value in its own closure.
 
-**7. How do closures relate to React hooks?**
+#### 7. How do closures relate to React hooks?
 
 Each call to `useState` or `useEffect` creates closures over the component's state and props for that render. This is why stale closures happen when effects or callbacks capture old values — and why the dependency array matters.
 
-**8. What is an IIFE and how does it relate to closures?**
+#### 8. What is an IIFE and how does it relate to closures?
 
 An Immediately Invoked Function Expression runs right after it is defined. It creates a private scope, and any functions returned or assigned from inside it form closures over that scope. This was the pre-ES-module way to avoid polluting the global namespace.
 
-**9. Implement a `once` function using closures.**
+#### 9. Implement a `once` function using closures.
 
 ```javascript
 function once(fn) {
@@ -227,7 +227,7 @@ function once(fn) {
 
 The inner function closes over `called` and `result`, ensuring `fn` runs only once.
 
-**10. Implement `debounce` using closures.**
+#### 10. Implement `debounce` using closures.
 
 ```javascript
 function debounce(fn, delay) {

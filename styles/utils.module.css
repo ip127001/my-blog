@@ -669,6 +669,7 @@
 .postHtml h3 {
   margin-top: 2rem;
   font-size: 1.2rem;
+  color: var(--text);
 }
 
 .postHtml img {
@@ -683,6 +684,95 @@
 
 .postHtml strong {
   color: var(--text);
+}
+
+/* Interview questions (h4 headings) */
+.postHtml h4 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  margin-top: 1.75rem;
+  margin-bottom: 0.35rem;
+}
+
+.postHtml h4 + p,
+.postHtml h4 + pre + p {
+  color: var(--text-secondary);
+  font-size: 0.98rem;
+  line-height: 1.8;
+  padding: 12px 16px;
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+  border-left: 3px solid var(--border);
+  border-radius: 0 8px 8px 0;
+  background: var(--surface);
+}
+
+.postHtml h4 + p strong,
+.postHtml h4 + pre + p strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Bold-only paragraphs used as questions elsewhere (e.g. http-vs-https) */
+.postHtml p:has(> strong:first-child:last-child) {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  margin-top: 1.75rem;
+  margin-bottom: 0.35rem;
+}
+
+.postHtml p:has(> strong:first-child:last-child) strong {
+  color: inherit;
+  font-weight: inherit;
+}
+
+/* Answers — never style a question paragraph as an answer */
+.postHtml p:has(> strong:first-child:last-child) + p,
+.postHtml p:has(> strong:first-child:last-child) + pre + p {
+  color: var(--text-secondary);
+  font-size: 0.98rem;
+  line-height: 1.8;
+  padding: 12px 16px;
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+  border-left: 3px solid var(--border);
+  border-radius: 0 8px 8px 0;
+  background: var(--surface);
+}
+
+.postHtml p:has(> strong:first-child:last-child) + p strong,
+.postHtml p:has(> strong:first-child:last-child) + pre + p strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Quotes & info — same neutral panel, italic for blockquotes */
+.postHtml blockquote {
+  margin: 1.25rem 0;
+  padding: 12px 16px;
+  border-left: 3px solid var(--border);
+  border-radius: 0 8px 8px 0;
+  background: var(--surface);
+  color: var(--text-secondary);
+  font-size: 0.96rem;
+  font-style: italic;
+  line-height: 1.75;
+}
+
+.postHtml blockquote strong {
+  color: var(--text);
+  font-weight: 600;
+  font-style: normal;
+}
+
+.postHtml blockquote code {
+  font-style: normal;
 }
 
 .spinner {
