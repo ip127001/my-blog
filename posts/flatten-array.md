@@ -5,8 +5,6 @@ description: This article will cover the algorithm to flatten an nested array us
 tags: javascript, programming, interviewpreperation, frontend
 ---
 
-![Blog](/images/flatten-array.png)
-
 **Problem statement:** There is an array containing elements as an array and those array elements can contain other elements as an array and so on. Now we have to convert this input array to a flat array that contains elements but not an array of elements.
 
 **Example:**

@@ -5,8 +5,6 @@ description: This article will cover everything to know about var variable decla
 tags: javascript, programming, interviewpreperation, frontend
 ---
 
-![var](/images/var.png)
-
 Variables represent a memory location where data can be stored. Basically, they are names of boxes in which we can put data values. But to use variables we need to declare a variable, then assign a data value to it. In Javascript, variables are declared with keywords `var`, `let`, and `const`.
 
 **Note**: In Java and many other languages variables are declared with different keywords like `int` for integer type of data values or `char` for characters. But in JavaScript, we have general keywords for all types of data values whether they are integer, decimal, boolean, or strings.

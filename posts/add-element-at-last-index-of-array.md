@@ -4,8 +4,6 @@ date: "2020-11-10"
 tags: javascript, programming, interviewpreperation, frontend
 ---
 
-![Image](/images/add-element-at-last-index-of-array.png)
-
 ### 1. Array.push() method
 
 - push method adds the element at the last index.

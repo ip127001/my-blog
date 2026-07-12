@@ -5,8 +5,6 @@ description: This article will cover everything to know about let variable decla
 tags: javascript, programming, interviewpreperation, frontend
 ---
 
-![let](/images/let.png)
-
 ES6 introduced the `let` keyword to declare variables for all types of data like boolean, object, integer, etc.
 
 In my [last blog](/posts/var), I discussed the introduction to variables in JavaScript, hoisting, and the `var` keyword.

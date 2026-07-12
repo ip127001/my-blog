@@ -5,8 +5,6 @@ description: This article will cover everything to know about const variable dec
 tags: javascript, programming, interviewpreperation, frontend
 ---
 
-![const](/images/const.png)
-
 Variable declaration: const
 
 ES6 introduced the `const` keyword to declare variables for all types of data like a boolean, object, integer, etc.

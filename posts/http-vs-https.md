@@ -4,8 +4,6 @@ date: "2026-07-10"
 tags: http, https, tls, security, frontend, interviewpreperation, javascript
 ---
 
-![Image](/images/http-vs-https.png)
-
 Every request your frontend makes — every page, API call, image and script — travels over HTTP or HTTPS. The difference between the two decides whether that data can be read by strangers, how fast your site loads, and even which browser features your app is allowed to use.
 
 Let's break it down in simple words.

@@ -5,8 +5,6 @@ description: This article will try to answer most asked questions related to var
 tags: javascript, beginners, programming, interviewpreperation, frontend
 ---
 
-![Blog](/images/var-let-const.png)
-
 It is the most common question asked in a JavaScript interview. `var` was the only option for variable declaration in Javascript before ES6 but after ES6 let and const were announced. I have covered [var](/posts/var), [let](/posts/let) and [const](/posts/const) in their seperate blogs in-depth.
 
 ### Q.1) What is the difference between var and ES6 new declarations (let/const)?

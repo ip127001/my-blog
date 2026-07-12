@@ -4,8 +4,6 @@ date: "2020-08-16"
 tags: javascript, programming, interviewpreperation, frontend, react
 ---
 
-![Image](/images/avoid-reconciliation.png)
-
 There are many performance optimization concepts in react which helps us to build faster applications.
 
 Today I am going to discuss one of most discussed concept in performance optimization: how to avoid Reconciliation

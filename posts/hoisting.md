@@ -5,8 +5,6 @@ description: This article will try to answer most asked questions related to hoi
 tags: javascript, beginners, programming, interviewpreperation, frontend
 ---
 
-![Blog](/images/hoisting.png)
-
 ### Most asked Interview questions regarding Hoisting
 
 1. What is hoisting in JavaScript?
